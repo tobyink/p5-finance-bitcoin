@@ -3,7 +3,7 @@ use warnings;
 
 use inc::Module::Install;
 
-my $dist = 'Example-Example';
+my $dist = 'Finance-Bitcoin';
 my $fn   = "lib/$dist.pm"; $fn =~ s#-#/#g;
 
 name                $dist;
@@ -14,15 +14,11 @@ readme_from         $fn;
 author              'Toby Inkster <tobyink@cpan.org>';
 license             'perl';
 
-test_requires       'Test::More' => '0.61';
-
 requires            'Carp'               => '1.00';
-requires            'DateTime'           => 0;
-requires            'RDF::Trine'         => '0.112';
-requires            'XML::LibXML'        => '1.60';
-requires            'URI'                => '1.30';
-
-# install_script 'fingerw';
+requires            'Class::Accessor'    => '0.34';
+requires            'JSON::RPC::Client'  => '0.93';
+requires            'Scalar::Util'       => 0;
+test_requires       'Test::More'         => '0.61';
 
 resources(
 	'homepage'   => "http://search.cpan.org/dist/$dist/",
