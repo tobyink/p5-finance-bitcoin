@@ -1,0 +1,12 @@
+Changes
+Changes.ttl
+Changes.xml
+Makefile.PL
+MANIFEST
+MANIFEST.SKIP
+README
+META.yml
+SIGNATURE
+
+t/00sig.t
+t/01basic.t
