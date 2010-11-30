@@ -5,7 +5,7 @@ use Class::Accessor 'antlers';
 use Finance::Bitcoin;
 use Scalar::Util qw[blessed];
 
-our $VERSION = '0.001';
+our $VERSION = '0.002';
 
 has api => (is => 'rw');
 

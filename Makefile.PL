@@ -17,6 +17,7 @@ license             'perl';
 requires            'Carp'               => '1.00';
 requires            'Class::Accessor'    => '0.34';
 requires            'JSON::RPC::Client'  => '0.93';
+test_requires       'Module::Signature'  => '0.66';
 requires            'Scalar::Util'       => 0;
 test_requires       'Test::More'         => '0.61';
 
@@ -25,7 +26,9 @@ resources(
 	'repository' => "http://goddamn.co.uk/viewvc/perlmods/$dist/",
 	'bugtracker' => "http://rt.cpan.org/Dist/Display.html?Queue=$dist",
 	);
-	
+
+keywords(qw(Finance Currency Currancy Bitcoin Micropayments Commerce));
+
 write_doap_changes;
 write_doap_changes_xml;
 

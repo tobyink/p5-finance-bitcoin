@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <rdf:RDF xmlns:dbug="http://ontologi.es/doap-bugs#" xmlns:dc="http://purl.org/dc/terms/" xmlns:dcs="http://ontologi.es/doap-changeset#" xmlns:doap="http://usefulinc.com/ns/doap#" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
-<rdf:Description rdf:nodeID="r56B3CD8298F411DFB9D3AE6C1C15074Dr0">
+<rdf:Description rdf:nodeID="r83D94DC2F5CA11DF926B893DEB094F77r0">
+	<dcs:item rdf:nodeID="r83D94DC2F5CA11DF926B893DEB094F77r1"/>
+	<dcs:versus rdf:resource="http://purl.org/NET/cpan-uri/dist/Finance-Bitcoin/v_0-001"/>
+</rdf:Description>
+<rdf:Description rdf:nodeID="r83D94DC2F5CA11DF926B893DEB094F77r1">
+	<rdf:type rdf:resource="http://ontologi.es/doap-changeset#Addition"/>
+	<rdfs:label xml:lang="en">Add $minconf parameter to Finance::Bitcoint::Account::received (patch from Pavel Karoukin).</rdfs:label>
+</rdf:Description>
+<rdf:Description rdf:nodeID="r83D94DC2F5CA11DF926B893DEB094F77r2">
 	<doap:browse rdf:resource="http://goddamn.co.uk/viewvc/perlmods/Finance-Bitcoin/"/>
 	<rdf:type rdf:resource="http://usefulinc.com/ns/doap#SVNRepository"/>
 </rdf:Description>
@@ -22,7 +30,8 @@
 	<doap:name>Finance-Bitcoin</doap:name>
 	<doap:programming-language>Perl</doap:programming-language>
 	<doap:release rdf:resource="http://purl.org/NET/cpan-uri/dist/Finance-Bitcoin/v_0-001"/>
-	<doap:repository rdf:nodeID="r56B3CD8298F411DFB9D3AE6C1C15074Dr0"/>
+	<doap:release rdf:resource="http://purl.org/NET/cpan-uri/dist/Finance-Bitcoin/v_0-002"/>
+	<doap:repository rdf:nodeID="r83D94DC2F5CA11DF926B893DEB094F77r2"/>
 	<doap:shortdesc xml:lang="en">manage a bitcoin instance</doap:shortdesc>
 	<doap:tester rdf:resource="http://tobyinkster.co.uk/#i"/>
 	<rdf:type rdf:resource="http://usefulinc.com/ns/doap#Project"/>
@@ -33,6 +42,13 @@
 	<doap:revision rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.001</doap:revision>
 	<rdf:type rdf:resource="http://usefulinc.com/ns/doap#Version"/>
 	<rdfs:comment xml:lang="en">Original version</rdfs:comment>
+</rdf:Description>
+<rdf:Description rdf:about="http://purl.org/NET/cpan-uri/dist/Finance-Bitcoin/v_0-002">
+	<dcs:changeset rdf:nodeID="r83D94DC2F5CA11DF926B893DEB094F77r0"/>
+	<dc:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2010-11-21</dc:issued>
+	<doap:file-release rdf:resource="http://backpan.cpan.org/authors/id/T/TO/TOBYINK/Finance-Bitcoin-0.002.tar.gz"/>
+	<doap:revision rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.002</doap:revision>
+	<rdf:type rdf:resource="http://usefulinc.com/ns/doap#Version"/>
 </rdf:Description>
 <rdf:Description xmlns:ns1="http://www.w3.org/2002/07/owl#" rdf:about="http://tobyinkster.co.uk/#i">
 	<rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Person"/>

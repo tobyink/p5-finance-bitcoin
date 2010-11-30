@@ -4,7 +4,7 @@ use Class::Accessor 'antlers';
 use JSON::RPC::Client;
 use Scalar::Util qw[blessed];
 
-our $VERSION = '0.001';
+our $VERSION = '0.002';
 
 has endpoint => (is => 'rw');
 has jsonrpc  => (is => 'rw');

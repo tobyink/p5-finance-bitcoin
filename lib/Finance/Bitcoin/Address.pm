@@ -5,7 +5,7 @@ use Class::Accessor 'antlers';
 use Finance::Bitcoin;
 use Scalar::Util qw[blessed];
 
-our $VERSION = '0.001';
+our $VERSION = '0.002';
 
 has address => (is => 'ro');
 has api     => (is => 'rw');
@@ -44,8 +44,9 @@ sub label
 
 sub received
 {
-	my ($self) = @_;
-	return $self->api->call('getreceivedbyaddress', $self->address);
+	my ($self, $minconf) = @_;
+	$minconf = 1 unless defined $minconf;
+	return $self->api->call('getreceivedbyaddress', $self->address, $minconf);
 }
 
 1;
@@ -90,9 +91,10 @@ Returns the address string.
 
 Get/set the address label.
 
-=item C<< received >>
+=item C<< received($minconf) >>
 
-Returns the total amount of received via this address.
+Returns the total amount received via this address, with at least $minconf
+confirmations. $minconf defaults to 1.
 
 =head1 BUGS
 

@@ -28,6 +28,17 @@ my:v_0-001
 	:file-release   <http://backpan.cpan.org/authors/id/T/TO/TOBYINK/Finance-Bitcoin-0.001.tar.gz> ;
 	rdfs:comment    "Original version"@en .
 
+my:v_0-002
+
+	a               :Version ;
+	dc:issued       "2010-11-21"^^xsd:date ;
+	:revision       "0.002"^^xsd:string ;
+	:file-release   <http://backpan.cpan.org/authors/id/T/TO/TOBYINK/Finance-Bitcoin-0.002.tar.gz> ;
+	dcs:changeset [
+		dcs:versus my:v_0-001 ;
+		dcs:item [ rdfs:label "Add $minconf parameter to Finance::Bitcoint::Account::received (patch from Pavel Karoukin)."@en ; a dcs:Addition ]
+		] .
+
 #############################################################
 
 my:project
@@ -46,7 +57,7 @@ my:project
 	:tester         toby:i ;
 	:created        "2010-07-26"^^xsd:date ;
 	:license        <http://dev.perl.org/licenses/> ;
-	:release        my:v_0-001 .
+	:release        my:v_0-001 , my:v_0-002 .
 
 #############################################################
 
