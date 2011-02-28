@@ -17,7 +17,6 @@ license             'perl';
 requires            'Carp'               => '1.00';
 requires            'Class::Accessor'    => '0.34';
 requires            'JSON::RPC::Client'  => '0.93';
-test_requires       'Module::Signature'  => '0.66';
 requires            'Scalar::Util'       => 0;
 test_requires       'Test::More'         => '0.61';
 
