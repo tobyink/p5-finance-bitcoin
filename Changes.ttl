@@ -47,10 +47,10 @@ my:project
 	:name           "Finance-Bitcoin" ;
 	:shortdesc      "manage a bitcoin instance"@en ;
 	:programming-language  "Perl" ;
-	:homepage       <http://search.cpan.org/dist/Finance-Bitcoin/> ;
-	:download-page  <http://search.cpan.org/dist/Finance-Bitcoin/> ;
+	:homepage       <https://metacpan.org/release/Finance-Bitcoin> ;
+	:download-page  <https://metacpan.org/release/Finance-Bitcoin> ;
 	:bug-database   <http://rt.cpan.org/Dist/Display.html?Queue=Finance-Bitcoin> ;
-	:repository     [ a :SVNRepository ; :browse <http://goddamn.co.uk/viewvc/perlmods/Finance-Bitcoin/> ] ;
+	:repository     [ a :SVNRepository ; :browse <http://goddamn.co.uk/svn-web/perlmods/browse/Finance-Bitcoin/> ] ;
 	:maintainer     toby:i ;
 	:developer      toby:i ;
 	:documenter     toby:i ;
@@ -66,7 +66,7 @@ toby:i
 	a               foaf:Person ;
 	foaf:name       "Toby Inkster" ;
 	foaf:homepage   <http://tobyinkster.co.uk/> ;
-	foaf:page       <http://search.cpan.org/~tobyink/> ;
+	foaf:page       <https://metacpan.org/author/TOBYINK> ;
 	foaf:mbox       <mailto:tobyink@cpan.org> ;
 	<http://www.w3.org/2002/07/owl#sameAs> <http://purl.org/NET/cpan-uri/person/tobyink> .
 
