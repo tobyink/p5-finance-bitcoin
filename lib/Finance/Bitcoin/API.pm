@@ -1,10 +1,12 @@
 package Finance::Bitcoin::API;
 
+use 5.010;
+use common::sense;
 use Class::Accessor 'antlers';
 use JSON::RPC::Client;
 use Scalar::Util qw[blessed];
 
-our $VERSION = '0.002';
+our $VERSION = '0.003';
 
 has endpoint => (is => 'rw');
 has jsonrpc  => (is => 'rw');
@@ -15,6 +17,14 @@ sub new
 	my ($class, %args) = @_;
 	$args{endpoint} ||= 'http://127.0.0.1:8332/';
 	$args{jsonrpc}  ||= JSON::RPC::Client->new;
+
+	if (defined $args{username} and $args{endpoint}=~ m#^http://(.+?)(/|$)#)
+	{
+		my $realm = $1;
+		warn "REALM: $realm";
+		$args{jsonrpc}->ua->credentials($realm, 'jsonrpc', $args{username}, $args{password})
+	}
+
 	bless \%args, $class;
 }
 
@@ -99,7 +109,7 @@ Toby Inkster E<lt>tobyink@cpan.orgE<gt>.
 
 =head1 COPYRIGHT
 
-Copyright 2010 Toby Inkster
+Copyright 2010-2011 Toby Inkster
 
 This library is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.

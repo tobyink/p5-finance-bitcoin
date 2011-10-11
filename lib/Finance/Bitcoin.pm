@@ -1,10 +1,12 @@
 package Finance::Bitcoin;
 
+use 5.010;
+use common::sense;
 use Finance::Bitcoin::API;
 use Finance::Bitcoin::Wallet;
 use Finance::Bitcoin::Address;
 
-our $VERSION = '0.002';
+our $VERSION = '0.003';
 
 1;
 
@@ -39,7 +41,7 @@ Toby Inkster E<lt>tobyink@cpan.orgE<gt>.
 
 =head1 COPYRIGHT
 
-Copyright 2010 Toby Inkster
+Copyright 2010-2011 Toby Inkster
 
 This library is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.

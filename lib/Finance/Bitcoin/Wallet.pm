@@ -1,11 +1,13 @@
 package Finance::Bitcoin::Wallet;
 
+use 5.010;
+use common::sense;
 use Carp;
 use Class::Accessor 'antlers';
 use Finance::Bitcoin;
 use Scalar::Util qw[blessed];
 
-our $VERSION = '0.002';
+our $VERSION = '0.003';
 
 has api => (is => 'rw');
 
@@ -150,7 +152,7 @@ Toby Inkster E<lt>tobyink@cpan.orgE<gt>.
 
 =head1 COPYRIGHT
 
-Copyright 2010 Toby Inkster
+Copyright 2010-2011 Toby Inkster
 
 This library is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.

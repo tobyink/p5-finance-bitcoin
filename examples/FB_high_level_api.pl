@@ -1,18 +1,16 @@
 #!/usr/bin/perl
 
 use 5.010;
-use lib 'lib';
-use Data::Dumper;
 use Finance::Bitcoin;
 
-my $creds   = shift @ARGV;
+my $creds   = shift @ARGV or die "Please provide username:password as a parameter.\n";
 my $uri     = 'http://'.$creds.'@127.0.0.1:8332/';
 my $wallet  = Finance::Bitcoin::Wallet->new( $uri );
 
 foreach my $address ($wallet->addresses)
 {
-	printf("%s (%s): %s\n", $address->address, $address->label, $address->received);
+	say $address->address, ": ", $address->received);
 }
 
-print "------\n";
-printf("Balance: %s\n", $wallet->balance);
+say "--";
+say "Balance: ", $wallet->balance;

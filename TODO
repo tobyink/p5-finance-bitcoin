@@ -1,3 +1,2 @@
 TODO:
-* Add some more items to this list.
-* Add keywords to Makefile.PL
+* This is only tested with bitcoing 0.3.3. Need to test with newer bitcoin clients.
