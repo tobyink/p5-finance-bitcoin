@@ -8,8 +8,10 @@ use Scalar::Util qw[blessed];
 
 our $VERSION = '0.003';
 
+BEGIN { foreach my $method (qw[endpoint jsonrpc error]) { eval "sub $method {}" } } # make visible to Pod::Coverage
+
 has endpoint => (is => 'rw');
-has jsonrpc  => (is => 'rw');
+has jsonrpc  => (is => 'ro');
 has error    => (is => 'rw');
 
 sub new
@@ -17,20 +19,14 @@ sub new
 	my ($class, %args) = @_;
 	$args{endpoint} ||= 'http://127.0.0.1:8332/';
 	$args{jsonrpc}  ||= JSON::RPC::Client->new;
-
-	if (defined $args{username} and $args{endpoint}=~ m#^http://(.+?)(/|$)#)
-	{
-		my $realm = $1;
-		warn "REALM: $realm";
-		$args{jsonrpc}->ua->credentials($realm, 'jsonrpc', $args{username}, $args{password})
-	}
-
 	bless \%args, $class;
 }
 
 sub call
 {
 	my ($self, $method, @params) = @_;
+
+	$self->error(undef);
 	
 	my $return = $self->jsonrpc->call($self->endpoint, {
 		method    => $method,
@@ -86,6 +82,16 @@ Constructor. %args is a hash of named arguments. You need to provide the
 =item C<< call( $method, @params ) >>
 
 Call a method. If successful returns the result; otherwise returns undef.
+
+=item C<< endpoint >>
+
+Get/set the endpoint URL.
+
+=item C<< jsonrpc >>
+
+Retrieve a reference to the L<JSON::RPC::Client> object being used. In particular
+C<< $api->jsonrpc->ua >> can be useful if you need to alter timeouts or HTTP proxy
+settings.
 
 =item C<< error >>
 

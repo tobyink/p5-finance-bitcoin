@@ -9,6 +9,8 @@ use Scalar::Util qw[blessed];
 
 our $VERSION = '0.003';
 
+BEGIN { foreach my $method (qw[api]) { eval "sub $method {}" } } # make visible to Pod::Coverage
+
 has api => (is => 'rw');
 
 sub new
@@ -133,6 +135,10 @@ Creates a new receiving address - i.e. an address that can be used by
 other people to send money to this wallet. $label is an optional
 human-friendly name for the address. Returns a Finance::Bitcoin::Address
 object.
+
+=item C<< api >>
+
+Retrieve a reference to the L<Finance::Bitcoin::API> object being used. 
 
 =back
 

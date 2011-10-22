@@ -27,7 +27,7 @@ my:v_0-002
 		] .
 
 my:project :release my:v_0-003 .
-my:v_0-002
+my:v_0-003
 	a               :Version ;
 	dc:issued       "2011-10-11"^^xsd:date ;
 	:revision       "0.003"^^xsd:string ;

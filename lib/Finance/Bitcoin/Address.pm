@@ -9,6 +9,8 @@ use Scalar::Util qw[blessed];
 
 our $VERSION = '0.003';
 
+BEGIN { foreach my $method (qw[api address]) { eval "sub $method {}" } } # make visible to Pod::Coverage
+
 has address => (is => 'ro');
 has api     => (is => 'rw');
 
@@ -97,6 +99,12 @@ Get/set the address label.
 
 Returns the total amount received via this address, with at least $minconf
 confirmations. $minconf defaults to 1.
+
+=item C<< api >>
+
+Retrieve a reference to the L<Finance::Bitcoin::API> object being used.
+
+=back
 
 =head1 BUGS
 
