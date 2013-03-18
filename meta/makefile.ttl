@@ -6,13 +6,8 @@
 	:perl_version_from _:main ;
 	:version_from _:main ;
 	:readme_from _:main ;
-	:test_requires "Test::More 0.61" ;
-	:requires "Carp 1.00" ;
-	:requires "Any::Moose" ;
-	:requires "Object::AUTHORITY" ;
-	:requires "JSON::RPC::Client 0.93" ;
-	:requires "Scalar::Util" ;
-	:requires "common::sense" ;
-	:requires "namespace::autoclean" .
+	:requires "Moo";
+	:requires "Object::AUTHORITY";
+	:requires "JSON::RPC::Client 0.93".
 
 _:main <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#fileName> "lib/Finance/Bitcoin.pm" .
