@@ -1,7 +1,9 @@
-package Finance::Bitcoint::Role::HasAPI;
+package Finance::Bitcoin::Role::HasAPI;
 
 use Moo::Role;
+
 use Finance::Bitcoin::API;
+use Scalar::Util qw( blessed );
 
 has api => (
 	is      => 'rw',

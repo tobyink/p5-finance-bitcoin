@@ -11,7 +11,7 @@ use Moo;
 use JSON::RPC::Client;
 use Moo;
 use Object::AUTHORITY;
-use Scalar::Util qw[blessed];
+use Scalar::Util qw( blessed );
 
 has endpoint => (is => "rw",   default => sub { "http://127.0.0.1:8332/" });
 has jsonrpc  => (is => "lazy", default => sub { "JSON::RPC::Client"->new });

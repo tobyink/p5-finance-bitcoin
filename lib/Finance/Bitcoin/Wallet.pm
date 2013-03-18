@@ -11,7 +11,7 @@ use Moo;
 use Carp;
 use Finance::Bitcoin;
 use Object::AUTHORITY;
-use Scalar::Util qw[blessed];
+use Scalar::Util qw( blessed );
 
 with "Finance::Bitcoin::Role::HasAPI";
 
