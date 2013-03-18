@@ -2,7 +2,7 @@ package Finance::Bitcoin::Address;
 
 BEGIN {
 	$Finance::Bitcoin::Address::AUTHORITY = 'cpan:TOBYINK';
-	$Finance::Bitcoin::Address::VERSION   = '0.004';
+	$Finance::Bitcoin::Address::VERSION   = '0.900';
 }
 
 use 5.010;

@@ -24,7 +24,7 @@ my:v_0-002
 	dcs:changeset [
 		dcs:versus my:v_0-001 ;
 		dcs:item [ rdfs:label "Add $minconf parameter to Finance::Bitcoint::Account::received (patch from Pavel Karoukin)."@en ; a dcs:Addition ]
-		] .
+	] .
 
 my:project :release my:v_0-003 .
 my:v_0-003
@@ -38,7 +38,7 @@ my:v_0-003
 		dcs:item [ rdfs:label "use common::sense"@en ] ;
 		dcs:item [ rdfs:label "Include examples in distribution."@en ; a dcs:Addition ] ;
 		dcs:item [ rdfs:label "Module::Package::RDF"@en ; a dcs:Packaging ]
-		] .
+	] .
 
 my:project :release my:v_0-004 .
 my:v_0-004
@@ -51,4 +51,16 @@ my:v_0-004
 		dcs:item [ rdfs:label "use Object::AUTHORITY"@en ; a dcs:Addition ] ;
 		dcs:item [ rdfs:label "Swap from Class::Accessor to Any::Moose."@en ] ;
 		dcs:item [ rdfs:label "Remove stub subs in BEGIN section. (They were only there for the benefit of Test::Pod::Coverage, but were causing problems.)"@en ; rdfs:seeAlso <https://rt.cpan.org/Public/Bug/Display.html?id=71713> ]
-		] .
+	] .
+
+my:project :release my:v_0-900 .
+my:v_0-900
+	a               :Version ;
+	dc:issued       "2013-03-18"^^xsd:date ;
+	:revision       "0.900"^^xsd:string ;
+	:file-release   <http://backpan.cpan.org/authors/id/T/TO/TOBYINK/Finance-Bitcoin-0.900.tar.gz> ;
+	dcs:changeset [
+		dcs:versus my:v_0-004 ;
+		dcs:item [ rdfs:label "Swap from Any::Moose to Moo."@en; a dcs:Update ] ;
+		dcs:item [ rdfs:label "General tidy up."@en ]
+	] .
