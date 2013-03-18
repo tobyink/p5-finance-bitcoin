@@ -9,7 +9,7 @@ my $wallet  = Finance::Bitcoin::Wallet->new( $uri );
 
 foreach my $address ($wallet->addresses)
 {
-	say $address->address, ": ", $address->received);
+	say $address->address, ": ", $address->received;
 }
 
 say "--";
