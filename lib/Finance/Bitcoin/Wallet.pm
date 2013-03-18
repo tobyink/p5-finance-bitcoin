@@ -1,79 +1,86 @@
 package Finance::Bitcoin::Wallet;
 
 use 5.010;
-use common::sense;
+use strict;
+use warnings;
+no warnings qw( numeric void once uninitialized );
+
 use Carp;
-use Class::Accessor 'antlers';
 use Finance::Bitcoin;
+use Moo;
+use Object::AUTHORITY;
 use Scalar::Util qw[blessed];
 
-our $VERSION = '0.003';
+BEGIN {
+	$Finance::Bitcoin::Wallet::AUTHORITY = 'cpan:TOBYINK';
+	$Finance::Bitcoin::Wallet::VERSION   = '0.004';
+}
 
-BEGIN { foreach my $method (qw[api]) { eval "sub $method {}" } } # make visible to Pod::Coverage
+has api => (
+	is      => 'rw',
+	default => sub { "Finance::Bitcoin::API"->new },
+);
 
-has api => (is => 'rw');
-
-sub new
+around BUILDARGS => sub
 {
-	my ($class, $api) = @_;
+	my $orig  = shift;
+	my $class = shift;
 	
-	unless (blessed($api) and $api->isa('Finance::Bitcoin::API'))
+	if (scalar @_ == 1 and blessed $_[0])
 	{
-		$api = $api ? 
-			Finance::Bitcoin::API->new(endpoint=>"$api") : 
-			Finance::Bitcoin::API->new;
+		return $class->$orig(api => @_);
+	}
+	elsif (scalar @_ == 1 and $_[0] =~ /^http/)
+	{
+		my $api = "Finance::Bitcoin::API"->new(endpoint => "$api");
+		return $class->$orig(api => $api);
 	}
 	
-	my $self = bless {
-		api   => $api ,
-		}, $class;
-}
+	return $class->$orig(@_);
+};
 
 sub balance
 {
-	my ($self) = @_;
+	my $self = shift;
 	return $self->api->call('getbalance');
 }
 
 sub pay
 {
-	my ($self, $address, $amount) = @_;
-
-	croak "Must provide an address"
-		unless $address;
-	croak "Must provide an amount"
-		unless $amount;
-		
-	if (blessed($address))
-	{
-		$address = $address->address;
-	}
+	my $self = shift;
+	my ($address, $amount) = @_;
 	
-	return $self->api->call('sendtoaddress', $address, $amount);
+	croak "Must provide an address" unless $address;
+	croak "Must provide an amount"  unless $amount;
+	
+	$address = $address->address if blessed $address;
+	
+	return $self->api->call(sendtoaddress => $address, $amount);
 }
 
 sub create_address
 {
-	my ($self, $label) = @_;
+	my $self = shift;
+	my ($label) = @_;
+	
 	my $address_id = $self->api->call('getnewaddress');
-	my $address    = Finance::Bitcoin::Address->new($self->api, $address_id);
-	$address->label($label)
-		if $label;
+	my $address = "Finance::Bitcoin::Address"->new($self->api, $address_id);
+	$address->label($label) if $label;
+	
 	return $address;
 }
 
 sub addresses
 {
 	my ($self) = @_;
-	my $list   = $self->api->call('listreceivedbyaddress', 0, JSON::true);
+	
+	my $list = $self->api->call('listreceivedbyaddress', 0, JSON::true);
+	return unless ref($list) eq 'ARRAY';
 	
 	return
-		map { Finance::Bitcoin::Address->new($self->api, $_->{address}); }
-			grep { $_->{amount} > 0 }
-				@$list
-		if ref $list eq 'ARRAY';
-		
-	return;
+		map  { "Finance::Bitcoin::Address"->new($self->api, $_->{address}); }
+		grep { $_->{amount} > 0 }
+		@$list;
 }
 
 1;

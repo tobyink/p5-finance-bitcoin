@@ -1,44 +1,42 @@
 package Finance::Bitcoin::API;
 
 use 5.010;
-use common::sense;
-use Class::Accessor 'antlers';
+use strict;
+use warnings;
+no warnings qw( numeric void once uninitialized );
+
 use JSON::RPC::Client;
+use Moo;
+use Object::AUTHORITY;
 use Scalar::Util qw[blessed];
 
-our $VERSION = '0.003';
-
-BEGIN { foreach my $method (qw[endpoint jsonrpc error]) { eval "sub $method {}" } } # make visible to Pod::Coverage
-
-has endpoint => (is => 'rw');
-has jsonrpc  => (is => 'ro');
-has error    => (is => 'rw');
-
-sub new
-{
-	my ($class, %args) = @_;
-	$args{endpoint} ||= 'http://127.0.0.1:8332/';
-	$args{jsonrpc}  ||= JSON::RPC::Client->new;
-	bless \%args, $class;
+BEGIN {
+	$Finance::Bitcoin::API::AUTHORITY = 'cpan:TOBYINK';
+	$Finance::Bitcoin::API::VERSION   = '0.004';
 }
+
+has endpoint => (is => "rw",   default => sub { "http://127.0.0.1:8332/" });
+has jsonrpc  => (is => "lazy", default => sub { "JSON::RPC::Client"->new });
+has error    => (is => "rw");
 
 sub call
 {
-	my ($self, $method, @params) = @_;
-
+	my $self = shift;
+	my ($method, @params) = @_;
+	
 	$self->error(undef);
 	
 	my $return = $self->jsonrpc->call($self->endpoint, {
 		method    => $method,
 		params    => \@params,
-		});
+	});
 	
-	if (blessed($return) and $return->can('is_success') and $return->is_success)
+	if (blessed $return and $return->can('is_success') and $return->is_success)
 	{
 		$self->error(undef);
 		return $return->result;
 	}
-	elsif (blessed($return) and $return->can('error_message'))
+	elsif (blessed $return and $return->can('error_message'))
 	{
 		$self->error($return->error_message);
 		return;

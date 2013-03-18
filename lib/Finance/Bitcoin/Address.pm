@@ -3,54 +3,53 @@ package Finance::Bitcoin::Address;
 use 5.010;
 use common::sense;
 use Carp;
-use Class::Accessor 'antlers';
 use Finance::Bitcoin;
+use Any::Moose;
+use Object::AUTHORITY;
 use Scalar::Util qw[blessed];
 
-our $VERSION = '0.003';
+BEGIN {
+	$Finance::Bitcoin::Address::AUTHORITY = 'cpan:TOBYINK';
+	$Finance::Bitcoin::Address::VERSION   = '0.004';
+}
 
-BEGIN { foreach my $method (qw[api address]) { eval "sub $method {}" } } # make visible to Pod::Coverage
+has address => (is => "ro");
 
-has address => (is => 'ro');
-has api     => (is => 'rw');
+has api => (
+	is      => 'rw',
+	default => sub { "Finance::Bitcoin::API"->new },
+);
 
-sub new
+around BUILDARGS => sub
 {
-	my ($class, $api, $address) = @_;
+	my $orig  = shift;
+	my $class = shift;
 	
-	unless (blessed($api) and $api->isa('Finance::Bitcoin::API'))
+	if (scalar @_ == 1 and blessed $_[0])
 	{
-		$api = $api ? 
-			Finance::Bitcoin::API->new(endpoint=>"$api") : 
-			Finance::Bitcoin::API->new;
+		return $class->$orig(api => @_);
+	}
+	elsif (scalar @_ == 1 and $_[0] =~ /^http/)
+	{
+		my $api = "Finance::Bitcoin::API"->new(endpoint => "$api");
+		return $class->$orig(api => $api);
 	}
 	
-	my $self = bless {
-		api     => $api,
-		address => $address,
-		}, $class;
-	
-	return $self;
-}
+	return $class->$orig(@_);
+};
 
 sub label
 {
 	my $self = shift;
-
-	if (@_) # set
-	{
-		my $label = shift;
-		$self->api->call('setlabel', $self->address, $label);
-	}
-
-	return $self->api->call('getlabel', $self->address);
+	$self->api->call(setlabel => $self->address, @_) if @_;
+	return $self->api->call(getlabel => $self->address);
 }
 
 sub received
 {
-	my ($self, $minconf) = @_;
-	$minconf = 1 unless defined $minconf;
-	return $self->api->call('getreceivedbyaddress', $self->address, $minconf);
+	my $self = shift;
+	my ($minconf) = @_;
+	return $self->api->call(getreceivedbyaddress => $self->address, ($minconf//1));
 }
 
 1;

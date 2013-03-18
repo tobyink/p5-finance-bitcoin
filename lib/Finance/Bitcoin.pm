@@ -1,12 +1,19 @@
 package Finance::Bitcoin;
 
 use 5.010;
-use common::sense;
+use strict;
+use warnings;
+no warnings qw( numeric void once uninitialized );
+
 use Finance::Bitcoin::API;
 use Finance::Bitcoin::Wallet;
 use Finance::Bitcoin::Address;
+use Object::AUTHORITY;
 
-our $VERSION = '0.003';
+BEGIN {
+	$Finance::Bitcoin::AUTHORITY = 'cpan:TOBYINK';
+	$Finance::Bitcoin::VERSION   = '0.004';
+}
 
 1;
 

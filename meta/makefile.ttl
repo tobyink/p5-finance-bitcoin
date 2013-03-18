@@ -8,9 +8,11 @@
 	:readme_from _:main ;
 	:test_requires "Test::More 0.61" ;
 	:requires "Carp 1.00" ;
-	:requires "Class::Accessor 0.34" ;
+	:requires "Any::Moose" ;
+	:requires "Object::AUTHORITY" ;
 	:requires "JSON::RPC::Client 0.93" ;
 	:requires "Scalar::Util" ;
-	:requires "common::sense" .
+	:requires "common::sense" ;
+	:requires "namespace::autoclean" .
 
 _:main <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#fileName> "lib/Finance/Bitcoin.pm" .
