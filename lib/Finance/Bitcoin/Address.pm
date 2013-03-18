@@ -1,42 +1,21 @@
 package Finance::Bitcoin::Address;
 
-use 5.010;
-use common::sense;
-use Carp;
-use Finance::Bitcoin;
-use Any::Moose;
-use Object::AUTHORITY;
-use Scalar::Util qw[blessed];
-
 BEGIN {
 	$Finance::Bitcoin::Address::AUTHORITY = 'cpan:TOBYINK';
 	$Finance::Bitcoin::Address::VERSION   = '0.004';
 }
 
+use 5.010;
+use Moo;
+
+use Carp;
+use Finance::Bitcoin;
+use Object::AUTHORITY;
+use Scalar::Util qw[blessed];
+
+with "Finance::Bitcoin::Role::HasAPI";
+
 has address => (is => "ro");
-
-has api => (
-	is      => 'rw',
-	default => sub { "Finance::Bitcoin::API"->new },
-);
-
-around BUILDARGS => sub
-{
-	my $orig  = shift;
-	my $class = shift;
-	
-	if (scalar @_ == 1 and blessed $_[0])
-	{
-		return $class->$orig(api => @_);
-	}
-	elsif (scalar @_ == 1 and $_[0] =~ /^http/)
-	{
-		my $api = "Finance::Bitcoin::API"->new(endpoint => "$api");
-		return $class->$orig(api => $api);
-	}
-	
-	return $class->$orig(@_);
-};
 
 sub label
 {
