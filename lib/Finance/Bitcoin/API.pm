@@ -2,7 +2,7 @@ package Finance::Bitcoin::API;
 
 BEGIN {
 	$Finance::Bitcoin::API::AUTHORITY = 'cpan:TOBYINK';
-	$Finance::Bitcoin::API::VERSION   = '0.900';
+	$Finance::Bitcoin::API::VERSION   = '0.901';
 }
 
 use 5.010;

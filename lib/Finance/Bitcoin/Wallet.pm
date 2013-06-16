@@ -2,7 +2,7 @@ package Finance::Bitcoin::Wallet;
 
 BEGIN {
 	$Finance::Bitcoin::Wallet::AUTHORITY = 'cpan:TOBYINK';
-	$Finance::Bitcoin::Wallet::VERSION   = '0.900';
+	$Finance::Bitcoin::Wallet::VERSION   = '0.901';
 }
 
 use 5.010;

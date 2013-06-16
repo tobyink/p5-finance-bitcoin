@@ -2,7 +2,7 @@ package Finance::Bitcoin::Role::HasAPI;
 
 BEGIN {
 	$Finance::Bitcoin::Role::HasAPI::AUTHORITY = 'cpan:TOBYINK';
-	$Finance::Bitcoin::Role::HasAPI::VERSION   = '0.900';
+	$Finance::Bitcoin::Role::HasAPI::VERSION   = '0.901';
 }
 
 use Moo::Role;
