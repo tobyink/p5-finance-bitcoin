@@ -8,13 +8,13 @@ BEGIN {
 use 5.010;
 use Moo;
 
-use JSON::RPC::Client;
+use JSON::RPC::Legacy::Client;
 use Moo;
 use Object::AUTHORITY;
 use Scalar::Util qw( blessed );
 
 has endpoint => (is => "rw",   default => sub { "http://127.0.0.1:8332/" });
-has jsonrpc  => (is => "lazy", default => sub { "JSON::RPC::Client"->new });
+has jsonrpc  => (is => "lazy", default => sub { "JSON::RPC::Legacy::Client"->new });
 has error    => (is => "rwp");
 
 sub call
@@ -85,7 +85,7 @@ Get/set the endpoint URL.
 
 =item C<< jsonrpc >>
 
-Retrieve a reference to the L<JSON::RPC::Client> object being used. In particular
+Retrieve a reference to the L<JSON::RPC::Legacy::Client> object being used. In particular
 C<< $api->jsonrpc->ua >> can be useful if you need to alter timeouts or HTTP proxy
 settings.
 
