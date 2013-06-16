@@ -41,6 +41,16 @@ __END__
 
 Finance::Bitcoin::Role::HasAPI - role for objects with an "api" attribute
 
+=head1 DESCRIPTION
+
+=over
+
+=item C<< api >>
+
+Returns an instance of L<Finance::Bitcoin::API>.
+
+=back
+
 =head1 AUTHOR
 
 Toby Inkster E<lt>tobyink@cpan.orgE<gt>.
