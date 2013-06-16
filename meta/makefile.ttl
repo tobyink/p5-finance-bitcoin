@@ -8,6 +8,6 @@
 	:readme_from _:main ;
 	:requires "Moo";
 	:requires "Object::AUTHORITY";
-	:requires "JSON::RPC::Legacy::Client 1.03".
+	:requires "JSON::RPC::Legacy::Client 0.93".
 
 _:main <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#fileName> "lib/Finance/Bitcoin.pm" .
