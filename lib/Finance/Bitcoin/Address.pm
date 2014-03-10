@@ -7,10 +7,8 @@ BEGIN {
 
 use 5.010;
 use Moo;
-
 use Carp;
 use Finance::Bitcoin;
-use Object::AUTHORITY;
 use Scalar::Util qw( blessed );
 
 with "Finance::Bitcoin::Role::HasAPI";

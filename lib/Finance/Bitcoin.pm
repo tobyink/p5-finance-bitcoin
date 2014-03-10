@@ -12,7 +12,6 @@ use warnings;
 use Finance::Bitcoin::API;
 use Finance::Bitcoin::Wallet;
 use Finance::Bitcoin::Address;
-use Object::AUTHORITY;
 
 1;
 

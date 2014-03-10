@@ -7,10 +7,7 @@ BEGIN {
 
 use 5.010;
 use Moo;
-
 use JSON::RPC::Legacy::Client;
-use Moo;
-use Object::AUTHORITY;
 use Scalar::Util qw( blessed );
 
 has endpoint => (is => "rw",   default => sub { "http://127.0.0.1:8332/" });

@@ -6,7 +6,6 @@ BEGIN {
 }
 
 use Moo::Role;
-
 use Finance::Bitcoin::API;
 use Scalar::Util qw( blessed );
 
