@@ -1,7 +1,6 @@
 #!/usr/bin/perl
 
 use 5.010;
-use lib 'lib';
 use Finance::Bitcoin::API;
 
 my $creds   = shift @ARGV or die "Please provide username:password as a parameter.\n";
