@@ -1,0 +1,71 @@
+`Finance-Bitcoin 0.001 cpan:TOBYINK`
+	issued  2010-07-26;
+	label   "Original version"@en.
+
+`Finance-Bitcoin 0.002 cpan:TOBYINK`
+	issued  2010-11-21;
+	changeset [
+		item [ label "Add $minconf parameter to Finance::Bitcoin::Account::received (patch from Pavel Karoukin)."@en; a dcs:Addition ];
+	].
+
+`Finance-Bitcoin 0.003 cpan:TOBYINK`
+	issued  2011-10-11;
+	changeset [
+		item [ label "use 5.010"@en ];
+		item [ label "use common::sense"@en ];
+		item [ label "Include examples in distribution."@en; a dcs:Addition ];
+		item [ label "Module::Package::RDF"@en ; a dcs:Packaging ];
+	].
+
+`Finance-Bitcoin 0.004 cpan:TOBYINK`
+	issued  2011-12-05;
+	changeset [
+		item [ label "use Object::AUTHORITY"@en; a dcs:Addition ] ;
+		item [ label "Swap from Class::Accessor to Any::Moose."@en ] ;
+		item [
+			label "Remove stub subs in BEGIN section. (They were only there for the benefit of Test::Pod::Coverage, but were causing problems.)"@en;
+			dcs:fixed RT#71713;
+		];
+	] .
+
+`Finance-Bitcoin 0.900 cpan:TOBYINK`
+	issued  2013-03-18;
+	changeset [
+		item [ label "Swap from Any::Moose to Moo."@en; a dcs:Update ];
+		item [ label "General tidy up."@en ];
+	].
+
+`Finance-Bitcoin 0.901 cpan:TOBYINK`
+	issued  2013-06-16;
+	changeset [
+		item [
+			a dcs:Update, dcs:Bugfix;
+			label "JSON::RPC::Client -> JSON::RPC::Legacy::Client."@en; 
+			comment "Annoying upstream change!"@en;
+			dcs:fixes RT#86193;
+			dcs:thanks cpan:CAVAC; 
+		];
+	].
+
+cpan:CAVAC foaf:name "Rene Schickbauer".
+
+`Finance-Bitcoin 0.902 cpan:TOBYINK`
+	issued  2014-03-10;
+	changeset [
+		item [
+			a dcs:Documentation;
+			label "Mention string/number encoding caveat for JSON-RPC.";
+			dcs:fixes RT#93524;
+		];
+		item [
+			label "Don't use Object::AUTHORITY.";
+		];
+		item [
+			a dcs:Packaging;
+			label "Fix link to repo - I haven't used that subversion repo in years.";
+		];
+		item [
+			a dcs:Packaging;
+			label "use Dist::Inkt.";
+		];
+	].

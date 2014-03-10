@@ -2,7 +2,7 @@ package Finance::Bitcoin::API;
 
 BEGIN {
 	$Finance::Bitcoin::API::AUTHORITY = 'cpan:TOBYINK';
-	$Finance::Bitcoin::API::VERSION   = '0.901';
+	$Finance::Bitcoin::API::VERSION   = '0.902';
 }
 
 use 5.010;
@@ -127,7 +127,7 @@ Toby Inkster E<lt>tobyink@cpan.orgE<gt>.
 
 =head1 COPYRIGHT
 
-Copyright 2010, 2011, 2013 Toby Inkster
+Copyright 2010, 2011, 2013, 2014 Toby Inkster
 
 This library is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.
