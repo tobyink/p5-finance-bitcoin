@@ -1,12 +1,9 @@
 # This file provides instructions for packaging.
 
-@prefix : <http://purl.org/NET/cpan-uri/terms#> .
+@prefix : <http://ontologi.es/doap-deps#> .
 
 <http://purl.org/NET/cpan-uri/dist/Finance-Bitcoin/project>
-	:perl_version_from _:main ;
-	:version_from _:main ;
-	:readme_from _:main ;
-	:requires "Moo";
-	:requires "JSON::RPC::Legacy::Client 0.93".
-
-_:main <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#fileName> "lib/Finance/Bitcoin.pm" .
+	:runtime-requirement [ :on "perl 5.010000"^^:CpanId ];
+	:runtime-requirement [ :on "Moo"^^:CpanId ];
+	:runtime-requirement [ :on "JSON::RPC::Legacy::Client 0.93"^^:CpanId ];
+	.
