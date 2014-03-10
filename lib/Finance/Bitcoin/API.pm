@@ -79,6 +79,25 @@ Constructor. %args is a hash of named arguments. You need to provide the
 
 Call a method. If successful returns the result; otherwise returns undef.
 
+B<< Caveat: >> The protocol used to communicate with the Bitcoin daemon
+is JSON-RPC based. JSON differentiates between numbers and strings:
+C<< "1" >> and C<< 1 >> are considered to be different values. Perl
+(mostly) does not. Thus the L<JSON> module often needs to guess whether
+a parameter (i.e. an item in C<< @params >>) is supposed to be a number
+or a string. If it guesses incorrectly, this may result in the wrong
+JSON getting sent to the Bitcoin daemon, and the daemon thus returning
+an error. To persuade L<JSON> to encode a value as a number, add zero to
+it; to persuade L<JSON> to encode a value as a string, interpolate it.
+For example:
+
+   $api->call(
+      "sendfrom",
+      "$from_adr",  # Str
+      "$to_adr",    # Str
+      $btc + 0,     # Num
+      6,            # literal: perl already knows this is a Num
+   );
+
 =item C<< endpoint >>
 
 Get/set the endpoint URL.
