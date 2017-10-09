@@ -18,7 +18,7 @@ around BUILDARGS => sub
 {
 	my $orig  = shift;
 	my $class = shift;
-	
+
 	if (scalar @_ == 1 and blessed $_[0])
 	{
 		return $class->$orig(api => @_);
@@ -28,7 +28,10 @@ around BUILDARGS => sub
 		my $api = "Finance::Bitcoin::API"->new(endpoint => "$_[0]");
 		return $class->$orig(api => $api);
 	}
-	
+	elsif (scalar @_ == 2 and blessed $_[0] and $class eq 'Finance::Bitcoin::Address'){
+		return $class->$orig(api => $_[0], address => $_[1]);
+	}
+
 	return $class->$orig(@_);
 };
 
